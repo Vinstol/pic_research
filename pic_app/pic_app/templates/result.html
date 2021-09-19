@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Проверка цветов изображений{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+
+<!-- Страница открывается в режиме отображения результата подсчета и поиска-->
+    
+    <h3 align='center'>Результат исследования изображения</h3>
+    <div class="card mb-4 shadow-sm">
+
+        <!-- Отображение загруженного изображения-->
+        {% load thumbnail %}
+        {% thumbnail pic "960x339" crop="center" upscale=True as im %}
+        <img class="card-img my-2" src="{{ pic.url }}" />
+        {% endthumbnail %}
+
+        <h6>{{ b_w_res }}</h6>
+
+        <br>
+        <h6>Найдено <b>{{ col_amount }}</b> пикселей цвета <b>{{ colour_hex }}</b>.</h6>
+
+        <br>
+        <small class="btn-group">
+            <a class="btn btn-sm btn-primary" href="{% url 'get_new_picture' %}" role="button" style="font-size: 12pt; align-self: center;">
+                Загрузить новое изображение
+            </a>
+        </small>
+    </div>
+
+{% endblock %}

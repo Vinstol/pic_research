@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Проверка цветов изображений{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+
+    <!-- Страница открывается в режиме загрузки нового изображения-->
+    <h3 align='center'>Загрузить новое изображение</h3>
+    <div class="card mb-4 shadow-sm">
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'get_new_picture' %}" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Изучить изображение">
+        </form>
+
+    </div>
+
+{% endblock %}
